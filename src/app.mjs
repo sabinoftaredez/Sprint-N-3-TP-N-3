@@ -1,4 +1,5 @@
 import express from 'express';
+import path from 'path'; // Para manejar rutas de archivos.
 import { connectDB } from './Config/dbConfig.mjs';
 import { superheroeRoutes } from './Routes/superheroeRoutes.mjs'; // Asegurarme que coincida.
 import methodOverride from 'method-override'; // Para poder usar PUT y DELETE en formularios HTML.
