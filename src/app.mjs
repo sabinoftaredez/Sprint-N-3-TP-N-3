@@ -23,6 +23,6 @@ app.use((req, res) => {
 // Capeta Publica para archivos estáticos.
 app.use(express.static('Public')); // Asegurarme que la ruta sea correcta.
 // Bienvenida al Servidor.
-app.listen(PORT, () => {
+app.listen(PORT, '0.0.0.0', () => {
     console.log(`Servidor corriendo en el http://localhost:${PORT}`);
 });
