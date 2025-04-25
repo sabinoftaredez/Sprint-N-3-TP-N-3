@@ -4,15 +4,18 @@ import { connectDB } from './Config/dbConfig.mjs';
 import { superheroeRoutes } from './Routes/superheroeRoutes.mjs'; // Asegurarme que coincida.
 import methodOverride from 'method-override'; // Para poder usar PUT y DELETE en formularios HTML.
 import { url } from 'inspector';
-import { URL } from 'url';
+import { fileURLToPath, URL } from 'url';
 const app = express();
 const PORT = process.env.PORT || 3005;
 // Method Override para poder usar PUT y DELETE en formularios HTML.
 app.use(methodOverride('_method'));
+// Obtener la ruta del directorio actual.
+const __filename = fileURLToPath(import.meta.url);
+const __dirname = path.dirname(__filename);
 // Configurar EJS.
 app.set('view engine', 'ejs');
-app.set('views', path.join(path.dirname(new URL(import.meta.url).pathname), 'View')); // Asegurarme que la ruta sea correcta.
-console.log('Ruta de vistas configurada' , path.join(path.dirname(new URL(import.meta.dirname).pathname), 'View')); // Verificar la ruta de las vistas.
+app.set('views', path.join(__dirname, 'View')); // Asegurarme que la ruta sea correcta.
+console.log('Ruta de vistas configurada:', path.join(__dirname, 'View')) // Verificar la ruta de las vistas.
 // Middleware para recibir JSON y datos de formularios.
 app.use(express.json());
 app.use(express.urlencoded({ extended: true}));
