@@ -10,6 +10,7 @@ app.use(methodOverride('_method'));
 // Configurar EJS.
 app.set('view engine', 'ejs');
 app.set('views', path.join(process.cwd(), 'src', 'View')); // Asegurarme que la ruta sea correcta.
+console.log(path.join(process.cwd(), 'src', 'View')); // Verificar la ruta de las vistas.
 // Middleware para recibir JSON y datos de formularios.
 app.use(express.json());
 app.use(express.urlencoded({ extended: true}));
@@ -21,7 +22,7 @@ app.use('/api/', superheroeRoutes); // Asegurarme que la ruta comience con una b
 app.use((req, res) => {
     res.status(404).send({ message: "Ruta no encontrada" });
 });
-// Capeta Publica para archivos estáticos.
+// Carpeta Public para archivos estáticos CSS.
 app.use(express.static('Public')); // Asegurarme que la ruta sea correcta.
 // Bienvenida al Servidor.
 app.listen(PORT, '0.0.0.0', () => {
