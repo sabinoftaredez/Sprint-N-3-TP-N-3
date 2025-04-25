@@ -12,6 +12,8 @@ app.use(methodOverride('_method'));
 // Obtener la ruta del directorio actual.
 const __filename = fileURLToPath(import.meta.url);
 const __dirname = path.dirname(__filename);
+// Carpeta Public para archivos estáticos CSS.
+app.use('/api/superheroes', express.static(path.join(__dirname,'Public'))); // Asegurarme que la ruta sea correcta.
 // Configurar EJS.
 app.set('view engine', 'ejs');
 app.set('views', path.join(__dirname, 'View')); // Asegurarme que la ruta sea correcta.
@@ -27,8 +29,6 @@ app.use('/api/', superheroeRoutes); // Asegurarme que la ruta comience con una b
 app.use((req, res) => {
     res.status(404).send({ message: "Ruta no encontrada" });
 });
-// Carpeta Public para archivos estáticos CSS.
-app.use(express.static('Public')); // Asegurarme que la ruta sea correcta.
 // Bienvenida al Servidor.
 app.listen(PORT, '0.0.0.0', () => {
     console.log(`Servidor corriendo en el http://localhost:${PORT}`);
