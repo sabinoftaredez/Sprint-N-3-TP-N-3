@@ -9,8 +9,8 @@ const PORT = process.env.PORT || 3005;
 app.use(methodOverride('_method'));
 // Configurar EJS.
 app.set('view engine', 'ejs');
-app.set('views', path.join(process.cwd(), 'src', 'View')); // Asegurarme que la ruta sea correcta.
-console.log(path.join(process.cwd(), 'src', 'View')); // Verificar la ruta de las vistas.
+app.set('views', path.resolve('src', 'View')); // Asegurarme que la ruta sea correcta.
+console.log('Ruta de vistas configurada' , path.resolve('src', 'View')); // Verificar la ruta de las vistas.
 // Middleware para recibir JSON y datos de formularios.
 app.use(express.json());
 app.use(express.urlencoded({ extended: true}));
